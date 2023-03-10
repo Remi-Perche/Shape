@@ -1,30 +1,23 @@
 ﻿using Shape.Models;
 
-public class Program
+namespace Shape
 {
-    public void Main()
+    public class Program
     {
-
-    }
-
-    public double TotalArea(object[] arrObjects)
-    {
-        double area = 0;
-        Rectangle objRectangle;
-        Circle objCircle;
-        foreach (var obj in arrObjects)
+        static void Main(string[] args)
         {
-            if (obj is Rectangle)
-            {
-                objRectangle = (Rectangle)obj;
-                area += objRectangle.Height * objRectangle.Width;
-            }
-            else
-            {
-                objCircle = (Circle)obj;
-                area += objCircle.Radius * objCircle.Radius * Math.PI;
-            }
+            Shape[] shapes = { Rectangle, Circle, Triangle, Square };
+            Console.WriteLine("L'aire totale est de : " + TotalArea(shapes) + Rectangle.Area());
         }
-        return area;
+
+        public static double TotalArea(Shape[] arrShapes)
+        {
+            double area = 0;
+            foreach (var objShape in arrShapes)
+            {
+                area += objShape.Area();
+            }
+            return area;
+        }
     }
 }
