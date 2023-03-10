@@ -1,2 +1,30 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Shape.Models;
+
+public class Program
+{
+    public void Main()
+    {
+
+    }
+
+    public double TotalArea(object[] arrObjects)
+    {
+        double area = 0;
+        Rectangle objRectangle;
+        Circle objCircle;
+        foreach (var obj in arrObjects)
+        {
+            if (obj is Rectangle)
+            {
+                objRectangle = (Rectangle)obj;
+                area += objRectangle.Height * objRectangle.Width;
+            }
+            else
+            {
+                objCircle = (Circle)obj;
+                area += objCircle.Radius * objCircle.Radius * Math.PI;
+            }
+        }
+        return area;
+    }
+}
